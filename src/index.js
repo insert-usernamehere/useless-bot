@@ -1,9 +1,30 @@
-var http = require("http");
+const Discord = require("discord.js");
+const axios = require("axios");
+const bot = new Discord.Client();
 
-//create a server object:
-http
-  .createServer(function(req, res) {
-    res.write("Hello World!"); //write a response to the client
-    res.end(); //end the response
-  })
-  .listen(8080); //the server object listens on port 8080
+const token = "bot token";
+
+bot.on("ready", () => {
+  console.log("bot is working");
+});
+
+bot.on("message", async msg => {
+  if (msg.content === "anime") {
+    msg.reply("anime sucks");
+  }
+
+  if (msg.content === "useless info") {
+    let getJoke = async () => {
+      let response = await axios.get(
+        "https://useless-facts.sameerkumar.website/api"
+      );
+      let joke = response.data;
+      return joke;
+    };
+    let jokeValue = await getJoke();
+    console.log(jokeValue);
+    msg.reply(`here a fact: ${jokeValue.data}`);
+  }
+});
+
+bot.login(token);
