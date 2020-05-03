@@ -2,7 +2,8 @@ const Discord = require("discord.js");
 const axios = require("axios");
 const bot = new Discord.Client();
 
-const token = "bot token";
+const token = "bot id";
+
 
 bot.on("ready", () => {
   console.log("bot is up and running if its not, start an issue plz give it 5 mins");
@@ -68,7 +69,7 @@ bot.on("message", async msg => {
     msg.reply(`here the word of the day ${wordValue.word} and heres its definition ${wordValue.meaning}`);
   }
 
-
+  
 });
 
 bot.login(token);
