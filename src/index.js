@@ -44,6 +44,32 @@ bot.on("message", async msg => {
     msg.reply("skawo is an amazing youtuber that does text comentary heres his channel: https://www.youtube.com/channel/UColqqqGEOAuzeD8Zt5Y67FQ ");
   }
 
+  if (msg.content === "developer role") {
+    msg.reply("can I get developer role?");
+  }
+
+  if (msg.content === "location") {
+    msg.reply("you're on the moon duh");
+  }
+
+  if (msg.content === "( ͡° ͜ʖ ͡°)") {
+    msg.reply("ew how dare you ( ͡° ͜ʖ ͡°)");
+  }
+
+  if (msg.content === "word of the day") {
+    let getWord = async () => {
+      let response = await axios.get(
+        "http://urban-word-of-the-day.herokuapp.com/today"
+      );
+      let word = response.data;
+      return word;
+    };
+    let wordValue = await getWord();
+    console.log(wordValue);
+    msg.reply(`here the word of the day ${wordValue.word} and heres its definition ${wordValue.meaning}`);
+  }
+
+  
 });
 
 bot.login(token);
