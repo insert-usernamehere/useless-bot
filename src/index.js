@@ -2,7 +2,8 @@ const Discord = require("discord.js");
 const axios = require("axios");
 const bot = new Discord.Client();
 
-const token = "bot token";
+const token = "bot id";
+
 
 bot.on("ready", () => {
   console.log("bot is working");
