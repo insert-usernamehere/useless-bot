@@ -80,7 +80,7 @@ bot.on("message", async msg => {
   if (msg.content === "pure gibberish") {
     let getGib = async () => {
       let response = await axios.get(
-        "http://www.randomtext.me/api/gibberish/p-12/25-100"
+        "http://www.randomtext.me/api/gibberish/p-7/25-50"
       );
       let gib = response.data;
       return gib;
@@ -95,7 +95,7 @@ bot.on("message", async msg => {
   if (msg.content === "story") {
     let getStory = async () => {
       let response = await axios.get(
-        "https://litipsum.com/api/"
+        "https://litipsum.com/api/json"
       );
       let story = response.data;
       return story;
@@ -103,7 +103,7 @@ bot.on("message", async msg => {
     let storyValue = await getStory();
     console.log(storyValue);
     msg.reply(
-      `${storyValue.api}`
+      `${storyValue.text}`
     );
   }
 
