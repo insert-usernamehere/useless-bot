@@ -5,7 +5,9 @@ const bot = new Discord.Client();
 const token = "bot token";
 
 bot.on("ready", () => {
-  console.log("bot is up and running if its not, start an issue plz give it 5 mins");
+  console.log(
+    "bot is up and running if its not, start an issue plz give it 5 mins"
+  );
 });
 
 bot.on("message", async msg => {
@@ -40,7 +42,9 @@ bot.on("message", async msg => {
   }
 
   if (msg.content === "skawo") {
-    msg.reply("skawo is an amazing youtuber that does text comentary heres his channel: https://www.youtube.com/channel/UColqqqGEOAuzeD8Zt5Y67FQ ");
+    msg.reply(
+      "skawo is an amazing youtuber that does text comentary heres his channel: https://www.youtube.com/channel/UColqqqGEOAuzeD8Zt5Y67FQ "
+    );
   }
 
   if (msg.content === "developer role") {
@@ -65,9 +69,41 @@ bot.on("message", async msg => {
     };
     let wordValue = await getWord();
     console.log(wordValue);
-    msg.reply(`here the word of the day ${wordValue.word} and heres its definition ${wordValue.meaning}`);
+    msg.reply(
+      `here the word of the day ${wordValue.word} and heres its definition ${
+        wordValue.meaning}`
+    );
   }
 
+  if (msg.content === "pure gibberish") {
+    let getGib = async () => {
+      let response = await axios.get(
+        "http://www.randomtext.me/api/gibberish/p-12/25-100"
+      );
+      let gib = response.data;
+      return gib;
+    };
+    let gibValue = await getGib();
+    console.log(gibValue);
+    msg.reply(
+      `${gibValue.text_out}`
+    );
+  }
+
+  if (msg.content === "story") {
+    let getStory = async () => {
+      let response = await axios.get(
+        "https://litipsum.com/api/"
+      );
+      let story = response.data;
+      return story;
+    };
+    let storyValue = await getStory();
+    console.log(storyValue);
+    msg.reply(
+      `${storyValue.api}`
+    );
+  }
 
 });
 
