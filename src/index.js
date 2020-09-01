@@ -11,10 +11,6 @@ bot.on("ready", () => {
   );
 });
 
-bot.on("message", async msg => {
-  if (msg.content === "anime") {
-    msg.reply("anime sucks");
-  }
 
   if (msg.content === "useless info") {
     let getJoke = async () => {
@@ -42,23 +38,11 @@ bot.on("message", async msg => {
     msg.reply(`here a fact: ${factValue.text}`);
   }
 
-  if (msg.content === "skawo") {
-    msg.reply(
-      "skawo is an amazing youtuber that does text comentary heres his channel: https://www.youtube.com/channel/UColqqqGEOAuzeD8Zt5Y67FQ "
-    );
-  }
-
-  if (msg.content === "developer role") {
-    msg.reply("can I get developer role?");
-  }
 
   if (msg.content === "location") {
     msg.reply("you're on the moon duh");
   }
 
-  if (msg.content === "( ͡° ͜ʖ ͡°)") {
-    msg.reply("ew how dare you ( ͡° ͜ʖ ͡°)");
-  }
 
   if (msg.content === "word of the day") {
     let getWord = async () => {
