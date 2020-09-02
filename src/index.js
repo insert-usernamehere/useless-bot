@@ -4,6 +4,10 @@ const bot = new Discord.Client();
 
 const token = "bot id";
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
 
 bot.on("ready", () => {
   console.log(
@@ -42,6 +46,11 @@ bot.on("ready", () => {
 
   if (msg.content === "location") {
     msg.channel.send("you're on the moon duh");
+  }
+
+  if (msg.content === "creator") {
+    if(msg.author.id != 666378959184855042) return;
+    msg.channel.send("hey look its my creator insert username here");
   }
 
 
