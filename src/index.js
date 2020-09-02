@@ -11,41 +11,46 @@ function getRandomInt(max) {
 
 bot.on("ready", () => {
   console.log(
-    "bot is up and running if its not, start an issue plz give it 5 mins"
+    "bot is up and running"
   );
 });
 
 
   bot.on("message", async msg => {
-    if (msg.content === "useless info") {
-	let getJoke = async () => {
-      let response = await axios.get(
-        "https://useless-facts.sameerkumar.website/api"
-      );
-      let joke = response.data;
-      return joke;
-    };
-    let jokeValue = await getJoke();
-    console.log(jokeValue);
-    msg.channel.send(`here a fact: ${jokeValue.data}`);
-  }
+    if (msg.content === "useless fact") {
+      const randomnumber = (getRandomInt(1001));
+      if (randomnumber < 500) {
+        let getJoke = async () => {
+          let response = await axios.get(
+            "https://useless-facts.sameerkumar.website/api"
+          );
+          let joke = response.data;
+          return joke;
+        };
+        let jokeValue = await getJoke();
+        console.log(jokeValue);
+        msg.channel.send(`here a fact: ${jokeValue.data}`);
+      } else {
+        let getFact = async () => {
+          let response = await axios.get(
+            "https://uselessfacts.jsph.pl/random.json?language=en"
+          );
+          let fact = response.data;
+          return fact;
+        };
+        let factValue = await getFact();
+        console.log(factValue);
+        msg.channel.send(`here a fact: ${factValue.text}`);
+      }
+    
+    }
 
-  if (msg.content === "useless fact") {
-    let getFact = async () => {
-      let response = await axios.get(
-        "https://uselessfacts.jsph.pl/random.json?language=en"
-      );
-      let fact = response.data;
-      return fact;
-    };
-    let factValue = await getFact();
-    console.log(factValue);
-    msg.channel.send(`here a fact: ${factValue.text}`);
-  }
-
-
-  if (msg.content === "location") {
+  if (msg.content === "useless location") {
     msg.channel.send("you're on the moon duh");
+  }
+
+  if (msg.content === "useless random number") {
+    msg.channel.send((getRandomInt(1000)));
   }
 
   if (msg.content === "creator") {
@@ -54,7 +59,7 @@ bot.on("ready", () => {
   }
 
 
-  if (msg.content === "word of the day") {
+  if (msg.content === "useless word of the day") {
     let getWord = async () => {
       let response = await axios.get(
         "http://urban-word-of-the-day.herokuapp.com/today"
@@ -71,7 +76,7 @@ bot.on("ready", () => {
   }
 
 
-  if (msg.content === "pure gibberish") {
+  if (msg.content === "useless pure gibberish") {
     let getGib = async () => {
       let response = await axios.get(
         "http://www.randomtext.me/api/gibberish/p-7/25-50"
