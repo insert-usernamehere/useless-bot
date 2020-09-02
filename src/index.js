@@ -12,8 +12,9 @@ bot.on("ready", () => {
 });
 
 
-  if (msg.content === "useless info") {
-    let getJoke = async () => {
+  bot.on("message", async msg => {
+    if (msg.content === "useless info") {
+	let getJoke = async () => {
       let response = await axios.get(
         "https://useless-facts.sameerkumar.website/api"
       );
@@ -22,7 +23,7 @@ bot.on("ready", () => {
     };
     let jokeValue = await getJoke();
     console.log(jokeValue);
-    msg.reply(`here a fact: ${jokeValue.data}`);
+    msg.channel.send(`here a fact: ${jokeValue.data}`);
   }
 
   if (msg.content === "useless fact") {
@@ -35,12 +36,12 @@ bot.on("ready", () => {
     };
     let factValue = await getFact();
     console.log(factValue);
-    msg.reply(`here a fact: ${factValue.text}`);
+    msg.channel.send(`here a fact: ${factValue.text}`);
   }
 
 
   if (msg.content === "location") {
-    msg.reply("you're on the moon duh");
+    msg.channel.send("you're on the moon duh");
   }
 
 
@@ -54,7 +55,7 @@ bot.on("ready", () => {
     };
     let wordValue = await getWord();
     console.log(wordValue);
-    msg.reply(
+    msg.channel.send(
       `here the word of the day ${wordValue.word} and heres its definition ${
         wordValue.meaning}`
     );
@@ -71,7 +72,7 @@ bot.on("ready", () => {
     };
     let gibValue = await getGib();
     console.log(gibValue);
-    msg.reply(
+    msg.channel.send(
       `${gibValue.text_out}`
     );
   }
@@ -86,7 +87,7 @@ bot.on("ready", () => {
     };
     let storyValue = await getStory();
     console.log(storyValue);
-    msg.reply(
+    msg.channel.send(
       `${storyValue.text}`
     );
   }
