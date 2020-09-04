@@ -49,8 +49,12 @@ bot.on("ready", () => {
     msg.channel.send("you're on the moon duh");
   }
 
+  if (msg.content === "useless ping") {
+    msg.reply("heh");
+  }
+
   if (msg.content === "useless random number") {
-    msg.channel.send((getRandomInt(1000)));
+    msg.channel.send((getRandomInt(10000)));
   }
 
   if (msg.content === "creator") {
@@ -91,10 +95,10 @@ bot.on("ready", () => {
     );
   }
 
-  if (msg.content === "story") {
+  if (msg.content === "useless story") {
     let getStory = async () => {
       let response = await axios.get(
-        "https://litipsum.com/api/json"
+        "https://litipsum.com/api/6/json"
       );
       let story = response.data;
       return story;
@@ -104,6 +108,13 @@ bot.on("ready", () => {
     msg.channel.send(
       `${storyValue.text}`
     );
+  }
+
+  if (msg.content === "emergency destroy") {
+    if(msg.author.id != 666378959184855042) return;
+    msg.channel.send("activateing emergency destory protocol");
+    bot.destroy();
+	bot.login(token);
   }
 
 });
