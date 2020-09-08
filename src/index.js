@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const axios = require("axios");
 const bot = new Discord.Client();
 
-const token = "NzA2MzQwNzIzNzAzNjc2OTY5.Xq41Dw.WWZbuMtVoztBnmPQsYjP6IbeAJk";
+const token = "botid";
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
