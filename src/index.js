@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const axios = require("axios");
 const bot = new Discord.Client();
 
-const token = "bot id";
+const token = "NzA2MzQwNzIzNzAzNjc2OTY5.Xq41Dw.WWZbuMtVoztBnmPQsYjP6IbeAJk";
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -29,7 +29,7 @@ bot.on("ready", () => {
         };
         let jokeValue = await getJoke();
         console.log(jokeValue);
-        msg.channel.send(`here a fact: ${jokeValue.data}`);
+        msg.channel.send(`here's a fact: ${jokeValue.data}`);
       } else {
         let getFact = async () => {
           let response = await axios.get(
@@ -40,14 +40,11 @@ bot.on("ready", () => {
         };
         let factValue = await getFact();
         console.log(factValue);
-        msg.channel.send(`here a fact: ${factValue.text}`);
+        msg.channel.send(`here's a fact: ${factValue.text}`);
       }
     
     }
 
-  if (msg.content === "useless location") {
-    msg.channel.send("you're on the moon duh");
-  }
 
   if (msg.content === "useless ping") {
     msg.reply("heh");
@@ -57,13 +54,17 @@ bot.on("ready", () => {
     msg.channel.send((getRandomInt(10000)));
   }
 
+      if (msg.content === "useless help") {
+    msg.channel.send("hello there my name is useless bot and my prefix is useless my commands are: fact, help, ping (note it will ping you), story, urban word of the day, random number, and pure giberish");
+  }
+  
+
   if (msg.content === "creator") {
     if(msg.author.id != 666378959184855042) return;
     msg.channel.send("hey look its my creator insert username here");
   }
 
-
-  if (msg.content === "useless word of the day") {
+  if (msg.content === "useless urban word of the day") {
     let getWord = async () => {
       let response = await axios.get(
         "http://urban-word-of-the-day.herokuapp.com/today"
